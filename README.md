@@ -18,7 +18,7 @@ I am currently studying data analysis and building skills for a professional car
 ---
 
 ## GitHub Stats
-![Stats](https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=default)
+![Stats](https://github-readme-stats.vercel.app/api?username=SahilSarder&show_icons=true&theme=default)
 
 ---
 
