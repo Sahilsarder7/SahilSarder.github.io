@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jahidul Islam | Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --card-bg: #f9fafb;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    nav .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    /* ── HEADER ── */
+    #header {
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    .avatar-wrapper {
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent);
+    }
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .avatar-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 3px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .header-text h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .cta-links a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.55rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-right: 0.75rem;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-outline {
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent-light); }
+
+    /* ── ABOUT ── */
+    #about p {
+      font-size: 1.05rem;
+      color: #374151;
+      max-width: 680px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skill-badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .project-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+    .project-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tech-tag {
+      background: var(--border);
+      color: #374151;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      max-width: 520px;
+    }
+    #contact p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-row a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact-row a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      #header { flex-direction: column; text-align: center; gap: 1.5rem; }
+      .header-text h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#header" class="logo">Jahidul Islam</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section id="header">
+    <!-- Replace the initials div below with an <img> tag pointing to your photo -->
+    <div class="avatar-placeholder">JI</div>
+
+    <div class="header-text">
+      <p class="section-label">Welcome</p>
+      <h1>Jahidul Islam</h1>
+      <p class="tagline">Computer Science Student · Aspiring Software Engineer · Problem Solver</p>
+      <div class="cta-links">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#projects" class="btn-outline">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About Me</p>
+    <h2>A little about myself</h2>
+    <p>
+      I am a motivated Computer Science student at Penn State University with a passion for building
+      clean, efficient software solutions. I enjoy working across the full stack and am constantly
+      expanding my knowledge through personal projects and coursework. I am actively seeking
+      internship and entry-level opportunities where I can contribute and grow.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Skills</p>
+    <h2>What I work with</h2>
+    <div class="skills-grid">
+      <span class="skill-badge">Leadership</span>
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">JavaScript</span>
+      <span class="skill-badge">HTML &amp; CSS</span>
+      <span class="skill-badge">Java</span>
+      <span class="skill-badge">SQL</span>
+      <span class="skill-badge">Git &amp; GitHub</span>
+      <span class="skill-badge">React</span>
+      <span class="skill-badge">Node.js</span>
+      <span class="skill-badge">Data Structures &amp; Algorithms</span>
+      <span class="skill-badge">REST APIs</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Projects</p>
+    <h2>Things I have built</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <span class="project-tag">Academic</span>
+        <h3>Student Grade Tracker</h3>
+        <p>
+          A web application that allows students to log their assignments, exams, and grades,
+          then visualizes GPA trends over time using interactive charts.
+        </p>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">SQLite</span>
+          <span class="tech-tag">Chart.js</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Personal</span>
+        <h3>Weather Dashboard</h3>
+        <p>
+          A responsive weather app that fetches real-time data from a public API and displays
+          current conditions and a 5-day forecast for any searched city.
+        </p>
+        <div class="tech-stack">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">HTML/CSS</span>
+          <span class="tech-tag">OpenWeather API</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Coursework</span>
+        <h3>Library Management System</h3>
+        <p>
+          A Java-based console application simulating a library's book checkout, return, and
+          inventory management system using OOP principles and file I/O.
+        </p>
+        <div class="tech-stack">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">OOP</span>
+          <span class="tech-tag">File I/O</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2>Let's connect</h2>
+    <div class="contact-card">
+      <p>Feel free to reach out for opportunities, collaborations, or just to say hello!</p>
+
+      <div class="contact-row">
+        <div class="contact-icon">✉</div>
+        <a href="mailto:jisahil130@gmail.com">jisahil130@gmail.com</a>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">💼</div>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+          linkedin.com/in/yourprofile
+        </a>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">🐙</div>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">
+          github.com/yourusername
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 Jahidul Islam · Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
